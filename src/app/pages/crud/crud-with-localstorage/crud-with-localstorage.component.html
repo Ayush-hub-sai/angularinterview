@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="row pt-3">
+        <div class="col-6">
+            <h4>Student Registration Form</h4>
+        </div>
+        <div class="col-6 text-end">
+            <button class="btn btn-outline-success" (click)="openModal()">Add New</button>
+        </div>
+    </div>
+
+    <!-- student list -->
+    @if(studentList.length>0){
+    <div class="rown m-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Mobile No</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Pincode</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for( student of studentList; track $index){
+                <tr>
+                    <td>{{student.name}}</td>
+                    <td>{{student.mobileNumber}}</td>
+                    <td>{{student.city}}</td>
+                    <td>{{student.state}}</td>
+                    <td>{{student.country}}</td>
+                    <td>{{student.pincode}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-danger"
+                            (click)="deleteStudentRecord(student)">Delete</button>&nbsp;
+                        <button class="btn btn-sm btn-outline-success"
+                            (click)="editStudentRecord(student)">Edit</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    }@else {
+    <div class="row text-center">
+        <h5>No Record Found</h5>
+    </div>
+    }
+
+
+    <!-- Modal -->
+    <div class="modal" #studentAddModal>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @if(studentObj.id==0){
+                    <h1 class="modal-title fs-5">Add Student</h1>
+                    }@else {
+                    <h1 class="modal-title fs-5">Edit Student</h1>
+                    }
+                    <button type="button" class="btn-close" (click)="closeModal()"></button>
+                </div>
+                <form #studentForm="ngForm">
+
+                    <div class="modal-body">
+                        <div class="row pt-2">
+                            <div class="col-6">
+                                <label for="name">Name</label>
+                                <input type="text" placeholder="Enter Your Name" name="name" class="form-control"
+                                    [(ngModel)]="studentObj.name" #fname="ngModel" required minlength="3">
+                                <!-- it can work without form tag -->
+                                <div class="text-danger">
+                                    @if((fname.touched || fname.dirty) && fname.errors?.["required"]){
+                                    <span>
+                                        Student Name Is Required
+                                    </span>
+                                    }@else if ((fname.touched || fname.dirty) && fname.errors?.["minlength"]) {
+                                    <span>
+                                        Min 3 Char Is Required
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="mobile">Mobile</label>
+                                <input type="text" placeholder="Enter Your Mobile" name="mobile" class="form-control"
+                                    [(ngModel)]="studentObj.mobileNumber" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-6">
+                                <label for="city">City</label>
+                                <input type="text" placeholder="Enter Your City" name="city" class="form-control"
+                                    [(ngModel)]="studentObj.city">
+                            </div>
+                            <div class="col-6">
+                                <label for="state">State</label>
+                                <input type="text" placeholder="Enter Your State" name="state" class="form-control"
+                                    [(ngModel)]="studentObj.state">
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-6">
+                                <label for="Country">Country</label>
+                                <input type="text" placeholder="Enter Your Country" name="Country" class="form-control"
+                                    [(ngModel)]="studentObj.country">
+                            </div>
+                            <div class="col-6">
+                                <label for="Pincode">Pincode</label>
+                                <input type="text" placeholder="Enter Your Pincode" name="Pincode" class="form-control"
+                                    [(ngModel)]="studentObj.pincode" maxlength="6">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                        @if(studentObj.id==0){
+                        <button type="button" class="btn btn-primary" (click)="saveStudent()"
+                            [disabled]="studentForm.invalid">Save
+                        </button>
+                        }@else {
+                        <button type="button" class="btn btn-primary" (click)="updateStudent()">Update </button>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

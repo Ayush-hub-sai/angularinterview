@@ -1,1 +1,75 @@
-<p>crud-json works!</p>
+<div class="container">
+    <div class="card mt-3 p-3">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="row mt-3">
+                <div class="col-2">
+                    <label for="name">First Name</label>
+                </div>
+                <div class="col-4">
+                    <input id="name" class="form-control" formControlName="name" />
+                    <div *ngIf="f['name'].errors && (f['name'].touched || f['name'].dirty)" class="error">
+                        <div *ngIf="f['name'].errors['required']">
+                            First name is required.
+                        </div>
+                        <div *ngIf="f['name'].errors['minlength']">
+                            First name must be at least 3 characters long.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-2">
+                    <label for="lname">Last Name</label>
+                </div>
+                <div class="col-4">
+                    <input id="lname" class="form-control" formControlName="lname" />
+                    <div *ngIf="f['lname'].errors && (f['lname'].touched || f['lname'].dirty)" class="error">
+                        <div *ngIf="f['lname'].errors['required']">
+                            Last name is required.
+                        </div>
+                        <div *ngIf="f['lname'].errors['minlength']">
+                            Last name must be at least 3 characters long.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-2">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-4">
+                    <input id="email" class="form-control" formControlName="email" />
+                    <div *ngIf="f['email'].errors && (f['email'].touched || f['email'].dirty)" class="error">
+                        <div *ngIf="f['email'].errors['required']">
+                            Valid email is required.
+                        </div>
+                        <div *ngIf="f['email'].errors['email']">
+                            Please enter a valid email address.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-2">
+                    <label for="password">Password</label>
+                </div>
+                <div class="col-4">
+                    <input id="password" class="form-control" type="password" formControlName="password" />
+                    <div *ngIf="f['password'].errors && (f['password'].touched || f['password'].dirty)" class="error">
+                        <div *ngIf="f['password'].errors['required']">
+                            Password is required.
+                        </div>
+                        <div *ngIf="f['password'].errors['minlength']">
+                            Password must be at least 6 characters long.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success mt-3">Submit</button>
+        </form>
+    </div>
+</div>

@@ -2,14 +2,41 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
+
+                <!-- crud -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Crud
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" routerLink="crud-with-local">Crud With Local(Template Driven)</a></li>
+                        <li><a class="dropdown-item" routerLink="crud-with-local">Crud With Local(Template Driven)</a>
+                        </li>
                         <li><a class="dropdown-item" routerLink="crud-json">Crud Json(Reactive form)</a></li>
                         <li><a class="dropdown-item" routerLink="crud-api">Crud Api</a></li>
+                    </ul>
+                </li>
+
+                <!-- Decorator -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Decorator
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="property-decorator">Property Decorator</a></li>
+                        <li><a class="dropdown-item" routerLink="method-decorator">Method Decorator</a></li>
+                        <!-- <li><a class="dropdown-item" routerLink="crud-api"></a></li> -->
+                    </ul>
+                </li>
+
+                <!-- directive -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Directive
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="host-listner">Host Listner</a></li>
+                        <li><a class="dropdown-item" routerLink="host-binding">Host Binding</a></li>
+                        <!-- <li><a class="dropdown-item" routerLink="crud-api"></a></li> -->
                     </ul>
                 </li>
 

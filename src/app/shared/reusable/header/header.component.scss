@@ -1,0 +1,16 @@
+/* Ensure that the submenu opens correctly */
+.dropdown-submenu .dropdown-menu {
+    display: none;
+}
+
+.dropdown-submenu:hover .dropdown-menu {
+    display: block;
+    margin-left: 0;
+    margin-top: 0;
+    top: 0;
+    left: 100%;
+}
+
+.dropdown-submenu {
+    position: relative;
+}

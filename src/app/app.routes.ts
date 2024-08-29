@@ -15,8 +15,8 @@ export const routes: Routes = [
     { path: "crud-json", component: CrudJsonComponent },
     { path: "property-decorator", component: PropertyComponent },
     { path: "method-decorator", component: MethodComponent },
-    { path: "host-listner", component: HostlistnerComponent },
-    { path: "host-binding", component: HostbindingComponent },
+    { path: "method-decorator/host-listner", component: HostlistnerComponent },
+    { path: "method-decorator/host-binding", component: HostbindingComponent },
     { path: "big-basket", component: BigbasketComponent },
     { path: "logic-building", component: LogicBuildingComponent }
 ];
